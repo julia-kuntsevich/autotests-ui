@@ -1,15 +1,11 @@
 import pytest
-from playwright.sync_api import Page
 from pages.registration_page import RegistrationPage
 from pages.dashboard_page import DashboardPage
-from playwright_registration import browser
 
-@pytest.mark.regression
-@pytest.mark.registration
 @pytest.mark.parametrize(
     "email, username, password",
     [
-        ("user.name@gmail.com", "username", "password"),
+        ("user.name@gmail.com", "username", "password")
     ]
 )
 def test_successful_registration( registration_page: RegistrationPage, dashboard_page: DashboardPage, email: str, username: str, password: str):
