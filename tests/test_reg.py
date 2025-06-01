@@ -2,6 +2,7 @@ import pytest
 from pages.registration_page import RegistrationPage
 from pages.dashboard_page import DashboardPage
 
+@pytest.mark.regression
 @pytest.mark.parametrize(
     "email, username, password",
     [
