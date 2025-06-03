@@ -52,4 +52,3 @@ class DashboardPage(BasePage):
 
     def check_visible_activities_chart(self):
         self.activities_chart_view.check_visible_view()
-

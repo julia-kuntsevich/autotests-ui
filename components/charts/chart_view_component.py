@@ -12,3 +12,4 @@ class ChartViewComponent(BaseComponent):
     def check_visible_view(self):
         expect(self.view).to_be_visible()
 
+
