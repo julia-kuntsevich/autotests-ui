@@ -2,7 +2,7 @@ import pytest
 from fixtures.pages import courses_list_page
 from pages.courses.courses_list_page import CoursesListPage
 from pages.courses.create_course_page import CreateCoursePage
-import time
+
 
 @pytest.mark.courses
 class TestCourses:
@@ -30,7 +30,6 @@ class TestCourses:
             estimated_time="2 weeks"
         )
         courses_list_page.courses_view_menu_component.click_edit(0)
-        time.sleep(5)
         courses_list_page.edit_course_form_component.fill(
             title="Selenium",
             estimated_time="1 weeks",
@@ -38,7 +37,6 @@ class TestCourses:
             max_score="20",
             min_score="2"
         )
-        time.sleep(5)
         courses_list_page.edit_course_form_component.check_visible(
             title="Selenium",
             estimated_time="1 weeks",
@@ -46,6 +44,5 @@ class TestCourses:
             max_score="20",
             min_score="2"
         )
-        time.sleep(5)
         courses_list_page.edit_course_form_component.click_button()
-        time.sleep(5)
+
