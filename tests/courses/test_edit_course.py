@@ -1,6 +1,7 @@
 import pytest
 import allure
-
+from tools.routes import AppRoute
+from config import settings
 from fixtures.pages import courses_list_page
 from pages.courses.courses_list_page import CoursesListPage
 from pages.courses.create_course_page import CreateCoursePage
@@ -24,7 +25,7 @@ class TestCourses:
             create_course_page: CreateCoursePage,
             courses_list_page: CoursesListPage
     ):
-        create_course_page.visit("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/courses/create")
+        create_course_page.visit(AppRoute.COURSES_CREATE)
         create_course_page.create_course_form_component.fill(
             title="Playwright",
             estimated_time="2 weeks",
@@ -32,7 +33,7 @@ class TestCourses:
             max_score="100",
             min_score="10"
         )
-        create_course_page.image_upload_widget_component.upload_preview_image('./testdata/files/image.png')
+        create_course_page.image_upload_widget_component.upload_preview_image(settings.test_data.image_png_file)
         create_course_page.image_upload_widget_component.check_visible(is_image_uploaded=True)
         create_course_page.create_course_toolbar_view_component.click_button()
         courses_list_page.course_view_component.check_visible(

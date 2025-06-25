@@ -1,7 +1,7 @@
 from playwright.sync_api import Page
 
 import allure
-
+from config import settings
 from components.authentication.login_form_component import LoginFormComponent
 from elements.button import Button
 from elements.link import Link
@@ -22,7 +22,7 @@ class LoginPage(BasePage):
             page,'login-page-wrong-email-or-password-alert', 'Wrong email or password'
         )
 
-    def fill_login_form(self, email="user.name@gmail.com", password="password"):
+    def fill_login_form(self, email=settings.test_user.email, password=settings.test_user.password):
         self.login_form_component.fill(email,password)
 
     def check_visible(self):

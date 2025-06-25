@@ -1,5 +1,5 @@
 from playwright.sync_api import Page
-
+from config import settings
 from pages.base_page import BasePage
 from components.authentication.registration_form_component import RegistrationFormComponent
 from elements.button import Button
@@ -19,7 +19,7 @@ class RegistrationPage(BasePage):
         # Добавили проверку
         self.check_current_url(re.compile(".*/#/auth/login"))
 
-    def fill_registration_form(self, email="user.name@gmail.com", username="username", password="password"):
+    def fill_registration_form(self, email=settings.test_user.email, username=settings.test_user.username, password=settings.test_user.password):
         self.registration_form_component.fill(email, username, password)
 
     def check_visible(self):

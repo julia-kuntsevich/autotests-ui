@@ -6,10 +6,10 @@ with sync_playwright() as playwright:
 
     page.goto("https://nikita-filonov.github.io/qa-automation-engineer-ui-course/#/auth/login")
     email_input = page.get_by_test_id('login-form-email-input').locator('input')
-    email_input.fill('user.name@gmail.com')
+    email_input.fill(settings.test_user.email)
 
     password_input = page.get_by_test_id('login-form-password-input').locator('input')
-    password_input.fill('password')
+    password_input.fill(settings.test_user.password)
 
     login_button = page.get_by_test_id('login-page-login-button')
     login_button.click()
