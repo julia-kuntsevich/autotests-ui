@@ -1,0 +1,8 @@
+.DS_Store
+
+allure-results/
+tracing/
+videos/
+__pycache__/
+
+
