@@ -1,8 +1,16 @@
 .DS_Store
 
+.idea
+
+venv
+__pycache__/
+
 allure-results/
+alllure-report
+
 tracing/
 videos/
-__pycache__/
+*.html
+*.json
 
 
