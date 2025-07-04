@@ -14,8 +14,8 @@ on:
 jobs:
   run-tests:
     runs-on: ubuntu-latest # Указываем, что тесты будут запускаться на последней версии Ubuntu
-    outputs:
-      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
+#    outputs:
+#      output1: ${{ steps.artifact-upload-step.outputs.artifact-id }}
 
     steps:
       # Шаг, который будет клонировать ваш репозиторий на машину GitHub Actions
@@ -43,13 +43,13 @@ jobs:
       # Шаг для получения истории отчётов Allure, если она существует
 
 
-  publish-report:
-    runs-on: ubuntu-latest # Указываем, что тесты будут запускаться на последней версии Ubuntu
-    needs: run-tests
-    steps:
-      - env:
-          OUTPUT1: ${{needs.run-tests.outputs.output1}}
-        run: echo "Artifact ID from previous job is $OUTPUT1"
+#  publish-report:
+#    runs-on: ubuntu-latest # Указываем, что тесты будут запускаться на последней версии Ubuntu
+#    needs: run-tests
+#    steps:
+#      - env:
+#          OUTPUT1: ${{needs.run-tests.outputs.output1}}
+#        run: echo "Artifact ID from previous job is $OUTPUT1"
 
       - name: Get Allure history
         uses: actions/checkout@v4.2.2  # Опять клонируем репозиторий, чтобы получить историю отчётов
