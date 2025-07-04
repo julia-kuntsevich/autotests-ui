@@ -65,6 +65,13 @@ jobs:
           OUTPUT1: ${{needs.run-tests.outputs.output1}}
         run: echo "Artifact ID from previous job is $OUTPUT1"
 
+      - name: Download tests result
+        if: always()
+        uses: actions/download-artifact@v4
+        with:
+          name: allure-results
+          path: gh-pages
+
       # Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
         if: always()  # Выполняется всегда, независимо от успеха других шагов
