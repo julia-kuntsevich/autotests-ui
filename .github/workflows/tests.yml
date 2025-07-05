@@ -43,7 +43,7 @@ jobs:
       # Шаг для получения истории отчётов Allure, если она существует
       - name: Upload Allure results
         id: artifact-upload-step
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4.6.2
         with:
             name: allure-results
             path: allure-results
@@ -57,7 +57,7 @@ jobs:
         run: echo "Artifact ID from previous job is $OUTPUT1"
 
       - name: Download Allure results
-        uses: actions/download-artifact@v3
+        uses: actions/download-artifact@v4.6.2
         with:
           name: allure-results
           path: allure-results
