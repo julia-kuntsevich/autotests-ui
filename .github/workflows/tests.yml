@@ -48,20 +48,6 @@ jobs:
             name: allure-results
             path: allure-results
 
-  publish-report:
-    runs-on: ubuntu-latest # Указываем, что тесты будут запускаться на последней версии Ubuntu
-    needs: run-tests
-    steps:
-      - env:
-          OUTPUT1: ${{needs.run-tests.outputs.output1}}
-        run: echo "Artifact ID from previous job is $OUTPUT1"
-
-      - name: Download Allure results
-        uses: actions/download-artifact@v4.6.2
-        with:
-          name: allure-results
-          path: allure-results
-
       - name: Get Allure history
         uses: actions/checkout@v4.2.2  # Опять клонируем репозиторий, чтобы получить историю отчётов
         if: always()  # Всегда выполняем, независимо от успеха или неудачи предыдущих шагов
@@ -78,7 +64,13 @@ jobs:
               allure_results: allure-results  # Указываем каталог с результатами тестов
               allure_history: allure-history  # Указываем каталог для истории отчётов Allure
 
-
+  publish-report:
+    runs-on: ubuntu-latest # Указываем, что тесты будут запускаться на последней версии Ubuntu
+    needs: run-tests
+    steps:
+      - env:
+          OUTPUT1: ${{needs.run-tests.outputs.output1}}
+        run: echo "Artifact ID from previous job is $OUTPUT1"
 
 #       Шаг для деплоя отчёта Allure на GitHub Pages, чтобы его можно было просматривать в браузере
       - name: Deploy report to Github Pages
